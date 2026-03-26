@@ -1,0 +1,54 @@
+Nishat Nasir Uddin
+Software Engineer
++82-010-9780-2701
+nasirnishat00@gmail.com
+github.com/nasir-nishat
+linkedin.com/in/nasir-nishat
+PROFESSIONAL EXPERIENCE
+Developed a no-code platform using Flutter from scratch with a visual drag-and-drop integrated development
+environment (IDE). Managed by a custom UI component, Actionflow, Variable, Events JSON with real-time preview
+integration and multi-platform (Android, iOS, web, desktop) deployment.
+Integrated AI agent system that provides conversational user interface capabilities similar to Cursor, enabling
+manipulation of components using NLP. Built the entire pipeline: a TypeScript Figma plugin that takes designs and
+converts them into a custom JSON schema, a distributed agent architecture that connects multiple large language model
+(LLM) providers (OpenAI, Claude, Qwen, Grok), WebSocket-based real-time updates, and live IDE updates without friction
+across all platforms.
+Designed a scalable backend using Supabase Edge Functions to handle operations related to components, sync with
+Figma, automate deployments, and run action workflows. I was able to build a complete behavior-driven development
+(BDD) automated testing framework with over fifty automated test scenarios, a CI/CD pipeline enabling seamless updates
+across platforms.
+Lead Platform Engineer, cogo.xyz
+Seoul, South Korea
+May 2023 - October 2025
+Developed a multi-synced platform for retail and e-commerce, unifying POS, back-office admin, kiosk, and mobile apps
+using Flutter and Spring-based APIs.
+Collaborated with cross-functional teams to align product vision, ensuring seamless data flow, real-time inventory
+updates, and consistent user experiences. Also launched a mobile app to Play Store and App Store.
+Co-led Flutter SDK integration alongside backend developers, optimizing performance and reducing deployment
+overhead, resulting in faster feature delivery and improved customer satisfaction.
+Frontend Engineer, finenex.net Jan 2022 - April 2023
+Seoul, South Korea
+AI/ML Chatbot for Mental Health Mar 2023 – Jun 2023
+Supervisor: Abolghasem Sadeghi-Niaraki
+Built a BERT/GPT-3 chatbot to support mental health, focusing on advanced natural language understanding.
+Led data curation and training, ensuring reliable and context-aware responses.
+PROJECTS
+Built an AI-driven platform to keep users motivated,
+track daily missions, and provide personalized guidance.
+Introduced multiple AI personas (Andrew T, David G,
+Gary Vi) offering mission-focused features, quick-start
+setups, and real-time accountability.
+My Top Goals (AI accountibility coaches)
+Built a platform linking businesses and individuals for parttime jobs, featuring skill-based matching and secure
+payments.
+Launched early-access incentives and a user-friendly
+interface, driving rapid adoption and community growth.
+Mehenot (Local Job & Service Marketplace in Bangladesh)
+AWARDS & ACIVEMENTS
+Sejong University Excellence Scholarship – Recognized for exceptional academic performance.
+Sejong University Internship Scholarship – Acknowledged for strong potential and practical industry experience.
+Undergraduate Student Research Award – Honored for contributions to innovative research.
+Sejong University, B.S in Computer Science & Engineering, Seoul, South Korea 2019 - 2023
+EDUCATION
+SKILLS
+Dart, Typescript, Flutter, NextJs, ReactJs, PostgreSQL, MongoDB, Supabase, Firebase, AI agents integrations, Curso

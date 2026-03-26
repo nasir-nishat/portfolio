@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Minimal motion: reveal on first view */
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle hover lift for cards */
+.card-hover {
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, currentColor 18%, transparent);
+  background-color: color-mix(in oklab, currentColor 7%, transparent);
+}
+
+.phone-toggle {
+  transition: filter 180ms ease, opacity 180ms ease;
+}
+
+.phone-hidden {
+  filter: blur(10px);
+  opacity: 0.9;
+  user-select: none;
+}
+
+.phone-visible {
+  filter: none;
+  opacity: 1;
+}
+
+/* Better <details> click target */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary {
+  list-style: none;
+}
