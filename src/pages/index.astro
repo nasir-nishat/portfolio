@@ -1,14 +1,14 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import {
-	profile,
-	projects,
-	experience,
-	skills,
-	awards,
-	services,
-} from "../data/portfolio";
 import { getCollection } from "astro:content";
+import {
+awards,
+experience,
+profile,
+projects,
+services,
+skills,
+} from "../data/portfolio";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const featuredProjects = projects.slice(0, 3);
 const blogPosts = (await getCollection("blog")).sort((a, b) =>
@@ -45,16 +45,22 @@ const blogPosts = (await getCollection("blog")).sort((a, b) =>
 
 				<div class="mt-6 flex flex-wrap gap-3">
 					<a
+                        href="/call/"
+                        class="rounded-xl bg-green-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-700 active:scale-[0.99]"
+                    >
+                        Book a Call
+                    </a>
+					<a
 						href="/projects/"
 						class="rounded-xl bg-zinc-900 px-4 py-2 text-sm font-semibold text-zinc-50 transition hover:opacity-90 active:scale-[0.99] dark:bg-white dark:text-zinc-950"
 					>
-						See projects
+						Projects
 					</a>
 					<a
 						href={"mailto:" + profile.email}
 						class="rounded-xl border border-black/10 bg-black/[0.03] px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-black/[0.05] active:scale-[0.99] dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
 					>
-						Email me
+						Email
 					</a>
 					<a
 						href={profile.github}

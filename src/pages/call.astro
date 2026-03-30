@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Book a Call | Nasir Nishat">
+  <section class="py-8 sm:py-12">
+    <div class="reveal">
+      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl text-center">Book a Call</h1>
+      <p class="mt-2 max-w-2xl text-sm text-zinc-600 dark:text-zinc-400 text-center mx-auto">
+        Schedule a 30-minute call with me directly below.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <iframe
+        src="https://cal.com/nasir-zcokrt/30min?overlayCalendar=true"
+        class="w-full h-[600px] sm:h-[800px] border border-black/10 rounded-lg dark:border-white/10"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
+</BaseLayout>
