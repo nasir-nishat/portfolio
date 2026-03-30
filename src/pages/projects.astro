@@ -15,13 +15,18 @@ import { projects } from "../data/portfolio";
 		<div class="mt-10 grid gap-4">
 			{
 				projects.map((p) => (
-					<article class="reveal overflow-hidden rounded-3xl border border-black/5 bg-white/40 p-5 backdrop-blur-xl transition-all duration-300 hover:bg-white/60 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/80 dark:hover:bg-white/10">
-						<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+					<article class="reveal overflow-hidden rounded-3xl border border-black/5 
+						bg-white/40 p-5 backdrop-blur-xl transition-all duration-300 
+						hover:bg-white/60 
+						dark:border-white/10 
+						dark:bg-white/5 
+						dark:hover:bg-white/10">
+							<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 							<div class="flex-1">
 								<div class="flex flex-wrap items-center gap-2.5">
 									<h2 class="text-lg font-bold tracking-tight sm:text-xl">
 										{p.name}
-									</h2>
+									</h2>	
 									<div class="flex flex-wrap gap-1.5">
 										{p.stack.map((t) => (
 											<span class="rounded-full bg-zinc-900/5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:bg-white/10 dark:text-zinc-400">
