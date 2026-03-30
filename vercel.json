@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/project/:path*",
+            "destination": "https://threejs-projects-chi.vercel.app/:path*"
+        }
+    ]
+}
