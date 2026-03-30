@@ -1,4 +1,11 @@
 {
+    "redirects": [
+        {
+            "source": "/project",
+            "destination": "/project/",
+            "permanent": true
+        }
+    ],
     "rewrites": [
         {
             "source": "/project/:path*",
