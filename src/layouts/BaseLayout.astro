@@ -1,0 +1,293 @@
+---
+import "../styles/global.css";
+import { profile, seo } from "../data/portfolio";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = seo.title, description = seo.description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content={seo.keywords.join(", ")} />
+		<meta name="author" content={profile.name} />
+		<meta name="robots" content="index,follow" />
+
+		<link rel="canonical" href="/" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:site_name" content={profile.name} />
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+
+		<script is:inline>
+			// Theme: default follows system. Only overrides if user explicitly toggles.
+			(() => {
+				const root = document.documentElement;
+				const stored = localStorage.getItem("theme"); // "light" | "dark" | null
+				const mq = window.matchMedia?.("(prefers-color-scheme: dark)");
+
+				const apply = (mode) => {
+					if (mode === "dark") root.classList.add("dark");
+					else root.classList.remove("dark");
+				};
+
+				const system = () => (mq && mq.matches ? "dark" : "light");
+
+				apply(
+					stored === "light" || stored === "dark" ? stored : system()
+				);
+
+				// Keep following system changes unless user set an override.
+				mq?.addEventListener?.("change", () => {
+					const stillFollowingSystem =
+						localStorage.getItem("theme") == null;
+					if (stillFollowingSystem) apply(system());
+				});
+			})();
+		</script>
+	</head>
+	<body
+		class="min-h-screen bg-zinc-50 text-zinc-900 antialiased selection:bg-zinc-900 selection:text-zinc-50 dark:bg-zinc-950 dark:text-zinc-100 dark:selection:bg-zinc-100 dark:selection:text-zinc-950"
+	>
+		<a
+			href="#content"
+			class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-zinc-100 focus:px-3 focus:py-2 focus:text-zinc-950"
+		>
+			Skip to content
+		</a>
+
+		<div class="pointer-events-none fixed inset-0 -z-10">
+			<div
+				class="absolute -top-24 left-1/2 h-80 w-[46rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-500/25 via-fuchsia-500/25 to-cyan-500/25 blur-3xl dark:from-indigo-500/20 dark:via-fuchsia-500/20 dark:to-cyan-500/20"
+			>
+			</div>
+			<div
+				class="absolute bottom-[-10rem] right-[-8rem] h-80 w-80 rounded-full bg-cyan-500/15 blur-3xl dark:bg-cyan-500/10"
+			>
+			</div>
+		</div>
+
+		<header
+			class="fixed top-4 inset-x-0 z-50 flex justify-center pointer-events-none px-4"
+		>
+			<nav
+				class="group pointer-events-auto flex items-center gap-3 rounded-full border border-black/10 bg-white/70 p-2 backdrop-blur-lg transition-all duration-500 hover:shadow-xl hover:scale-[1.02] dark:border-white/10 dark:bg-zinc-950/75 shadow-lg"
+			>
+				<div class="flex items-center">
+					<a href="/" class="px-3 py-2 text-sm font-bold tracking-tight hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+						>Nasir Nishat</a
+					>
+					<div class="h-4 w-px bg-black/10 dark:bg-white/10 mx-1"></div>
+				</div>
+				
+				<div
+					class="flex items-center gap-1 text-sm font-medium text-zinc-600 dark:text-zinc-400 overflow-hidden transition-all duration-500"
+				>
+					<a
+						class="rounded-full px-3 py-2 hover:bg-black/5 hover:text-zinc-950 dark:hover:bg-white/10 dark:hover:text-white transition-all whitespace-nowrap"
+						href="/projects/">Projects</a
+					>
+					<a
+						class="rounded-full px-3 py-2 hover:bg-black/5 hover:text-zinc-950 dark:hover:bg-white/10 dark:hover:text-white transition-all whitespace-nowrap lg:block hidden group-hover:block"
+						href="/#experience">Experience</a
+					>
+					<a
+						class="rounded-full px-3 py-2 hover:bg-black/5 hover:text-zinc-950 dark:hover:bg-white/10 dark:hover:text-white transition-all whitespace-nowrap"
+						href="/blogs/">Blog</a
+					>
+					<a
+						class="rounded-full px-3 py-2 hover:bg-black/5 hover:text-zinc-950 dark:hover:bg-white/10 dark:hover:text-white transition-all whitespace-nowrap lg:block hidden group-hover:block"
+						href="/#contact">Contact</a
+					>
+				</div>
+
+				<div class="flex items-center gap-1 ml-1">
+					<div class="h-4 w-px bg-black/10 dark:bg-white/10 mx-1"></div>
+					<button
+						id="theme-toggle"
+						type="button"
+						class="inline-flex h-9 w-9 items-center justify-center rounded-full text-zinc-600 transition hover:bg-black/5 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"
+						aria-label="Toggle dark mode"
+						title="Toggle theme"
+					>
+						<svg
+							id="theme-icon-sun"
+							class="hidden h-4.5 w-4.5"
+							viewBox="0 0 24 24"
+							fill="none"
+							aria-hidden="true"
+						>
+							<path
+								d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"
+								stroke="currentColor"
+								stroke-width="2"></path>
+							<path
+								d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"></path>
+						</svg>
+						<svg
+							id="theme-icon-moon"
+							class="hidden h-4.5 w-4.5"
+							viewBox="0 0 24 24"
+							fill="none"
+							aria-hidden="true"
+						>
+							<path
+								d="M21 13.2A7.8 7.8 0 1 1 10.8 3a6.2 6.2 0 0 0 10.2 10.2Z"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linejoin="round"></path>
+						</svg>
+					</button>
+					<a
+						href={"mailto:" + profile.email}
+						class="hidden sm:flex h-9 items-center justify-center rounded-full bg-zinc-900 px-4 text-xs font-bold text-zinc-50 transition hover:opacity-90 active:scale-[0.98] dark:bg-white dark:text-zinc-950"
+					>
+						Email
+					</a>
+				</div>
+			</nav>
+		</header>
+
+		<main id="content" class="mx-auto max-w-5xl px-4 pt-24">
+			<slot />
+		</main>
+
+		<footer class="border-t border-black/10 py-8 dark:border-white/10">
+			<div
+				class="mx-auto flex max-w-5xl flex-col gap-3 px-4 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between dark:text-zinc-400"
+			>
+				<div>© {new Date().getFullYear()} {profile.name}</div>
+				<div class="flex gap-4">
+					<a
+						class="hover:text-zinc-950 dark:hover:text-white"
+						href={profile.github}
+						target="_blank"
+						rel="noreferrer">GitHub</a
+					>
+					<a
+						class="hover:text-zinc-950 dark:hover:text-white"
+						href={profile.linkedin}
+						target="_blank"
+						rel="noreferrer">LinkedIn</a
+					>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			// Icon-only theme toggle (system default; click sets override).
+			(() => {
+				const root = document.documentElement;
+				const mq = window.matchMedia?.("(prefers-color-scheme: dark)");
+
+				const apply = (mode: any) => {
+					if (mode === "dark") root.classList.add("dark");
+					else root.classList.remove("dark");
+					updateIcon();
+				};
+
+				const system = () => (mq && mq.matches ? "dark" : "light");
+				const current = () =>
+					root.classList.contains("dark") ? "dark" : "light";
+
+				const sun = document.getElementById("theme-icon-sun");
+				const moon = document.getElementById("theme-icon-moon");
+				const updateIcon = () => {
+					const mode = current();
+					sun?.classList.toggle("hidden", mode !== "dark");
+					moon?.classList.toggle("hidden", mode === "dark");
+				};
+				updateIcon();
+
+				document
+					.getElementById("theme-toggle")
+					?.addEventListener("click", () => {
+						const next = current() === "dark" ? "light" : "dark";
+						localStorage.setItem("theme", next);
+						apply(next);
+					});
+
+				mq?.addEventListener?.("change", () => {
+					if (localStorage.getItem("theme") == null) apply(system());
+				});
+			})();
+
+			// Scroll reveal handling
+			const els = document.querySelectorAll(".reveal");
+			const io = new IntersectionObserver(
+				(entries) => {
+					for (const e of entries) {
+						if (e.isIntersecting)
+							e.target.classList.add("is-visible");
+					}
+				},
+				{ threshold: 0.08 }
+			);
+			els.forEach((el) => io.observe(el));
+
+			// Phone reveal logic (if needed on other pages)
+			function revealPhone(el: HTMLElement) {
+				if (!el) return;
+				const tel = el.dataset.phone;
+				if (!tel) return;
+
+				el.classList.remove("phone-hidden");
+				el.classList.add("phone-visible");
+
+				if (el.tagName === "BUTTON") {
+					const a = document.createElement("a");
+					a.href = tel;
+					a.className = el.className
+						.replace("phone-hidden", "")
+						.replace("phone-visible", "");
+					a.textContent = el.textContent;
+					el.replaceWith(a);
+					return;
+				}
+			}
+
+			document.querySelectorAll("[data-phone]").forEach((node) => {
+				const el = node as HTMLElement;
+				el.addEventListener("click", (e) => {
+					if (el.tagName === "BUTTON") {
+						e.preventDefault();
+						revealPhone(el);
+						return;
+					}
+					if (el.tagName === "SPAN") {
+						e.preventDefault();
+						const tel = el.dataset.phone;
+						if (!tel) return;
+
+						el.classList.remove("phone-hidden");
+						el.classList.add("phone-visible");
+
+						const parent = el.closest("[data-phone-link]");
+						if (parent instanceof HTMLAnchorElement) {
+							parent.href = tel;
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
