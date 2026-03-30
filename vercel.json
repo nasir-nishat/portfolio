@@ -1,12 +1,13 @@
 {
-    "redirects": [
+    "rewrites": [
         {
             "source": "/project",
-            "destination": "/project/",
-            "permanent": true
-        }
-    ],
-    "rewrites": [
+            "destination": "https://threejs-projects-chi.vercel.app/"
+        },
+        {
+            "source": "/project/",
+            "destination": "https://threejs-projects-chi.vercel.app/"
+        },
         {
             "source": "/project/:path*",
             "destination": "https://threejs-projects-chi.vercel.app/:path*"
@@ -16,14 +17,8 @@
         {
             "source": "/project/(.*)",
             "headers": [
-                {
-                    "key": "Access-Control-Allow-Origin",
-                    "value": "*"
-                },
-                {
-                    "key": "Cache-Control",
-                    "value": "s-maxage=0"
-                }
+                { "key": "Access-Control-Allow-Origin", "value": "*" },
+                { "key": "Cache-Control", "value": "s-maxage=0" }
             ]
         }
     ]
