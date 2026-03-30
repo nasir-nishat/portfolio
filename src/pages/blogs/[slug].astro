@@ -11,34 +11,50 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+// Simple read time calculation
+const wordCount = entry.body?.split(/\s+/).length || 0;
+const readTime = Math.max(1, Math.ceil(wordCount / 200));
 ---
 
 <BaseLayout title={`${entry.data.title} | Blog`}>
-	<article class="py-12 sm:py-16">
-		<div class="reveal">
-			<a href="/blogs/" class="text-sm font-semibold text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition flex items-center gap-2">
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+	<article class="py-8 sm:py-12">
+		<div class="reveal mx-auto max-w-3xl">
+			<a href="/blogs/" class="group inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-indigo-600 dark:text-zinc-500 dark:hover:text-indigo-400 transition-colors">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
 					<line x1="19" y1="12" x2="5" y2="12"></line>
 					<polyline points="12 19 5 12 12 5"></polyline>
 				</svg>
-				Back to blog
+				Back to writing
 			</a>
 			
-			<div class="mt-8">
+			<header class="mt-8 overflow-hidden rounded-3xl border border-black/5 bg-white/40 p-6 backdrop-blur-xl dark:border-white/10 dark:bg-white/5 sm:p-10">
 				<div class="flex items-center gap-3">
-					<span class="rounded-full border border-black/10 bg-black/[0.03] px-2 py-1 text-[11px] font-semibold text-zinc-700 dark:border-white/10 dark:bg-black/20 dark:text-zinc-200">
+					<span class="rounded-full bg-indigo-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400">
 						{entry.data.tag}
 					</span>
-					<span class="text-xs text-zinc-500 dark:text-zinc-400">
-						{entry.data.date}
-					</span>
+					<div class="flex items-center gap-1.5 text-[11px] font-medium text-zinc-500">
+						<span>{entry.data.date}</span>
+						<span class="text-zinc-300 dark:text-zinc-700">•</span>
+						<span>{readTime} min read</span>
+					</div>
 				</div>
-				<h1 class="mt-4 text-3xl font-bold tracking-tight sm:text-5xl text-zinc-900 dark:text-white">
+				<h1 class="mt-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl lg:text-5xl">
 					{entry.data.title}
 				</h1>
-			</div>
+				<p class="mt-4 text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+					{entry.data.description}
+				</p>
+			</header>
 			
-			<div class="mt-12 prose prose-zinc dark:prose-invert max-w-none">
+			<div class="mt-12 text-zinc-900 dark:text-zinc-200
+				[&_h2]:mt-12 [&_h2]:mb-6 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-zinc-900 [&_h2]:dark:text-white
+				[&_h3]:mt-8 [&_h3]:mb-4 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-zinc-900 [&_h3]:dark:text-white
+				[&_p]:mb-6 [&_p]:text-base [&_p]:leading-relaxed [&_p]:text-zinc-700 [&_p]:dark:text-zinc-300
+				[&_ul]:mb-6 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2
+				[&_li]:text-base [&_li]:leading-relaxed
+				[&_strong]:font-bold [&_strong]:text-zinc-900 [&_strong]:dark:text-white
+				[&_a]:text-indigo-600 [&_a]:dark:text-indigo-400 [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-indigo-500/30 hover:[&_a]:decoration-indigo-500">
 				<Content />
 			</div>
 		</div>

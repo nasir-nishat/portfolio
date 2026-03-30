@@ -36,17 +36,19 @@ export const projects = [
 			"Multiple AI personas for guidance and accountability",
 			"Quick-start setups and mission-focused flows",
 		],
+		link: "https://mytopg.com/",
 	},
 	{
 		name: "Mehenot",
 		oneLiner:
 			"A marketplace that matches people to work fast, with a simple flow and secure payments.",
-		stack: ["Marketplace", "Payments"],
+		stack: ["RemixJs", "NextJs", "Supabase", "Payments", "Gemini API"],
 		details: [
 			"Skill-based matching for part-time jobs and services",
 			"Secure payments",
 			"Early-access incentives to drive adoption",
 		],
+		link: "https://mehenot.com/",
 	},
 	{
 		name: "3D Creative Projects",
@@ -59,9 +61,10 @@ export const projects = [
 			"Dynamic lighting cycles and bloom post-processing",
 		],
 		link: "/project/",
+		github: "https://github.com/nasir-nishat/threejs-projects",
 	},
 	{
-		name: "Sejong AI Mental Health Bot",
+		name: "AI Mental Health Bot",
 		oneLiner:
 			"Context-aware chatbot using BERT and GPT-2 for mental health support.",
 		stack: ["Python", "BERT", "GPT-2", "PyTorch"],
@@ -69,6 +72,7 @@ export const projects = [
 			"Developed as a final year project at Sejong University.",
 			"Fine-tuned transformer models for empathetic response generation.",
 			"Curated a specialized dataset for therapeutic dialogue.",
+			"We used Jalal Uddin Rumi's Masnavi book to train as a chatbot."
 		],
 	},
 ];
