@@ -1,5 +1,5 @@
 export const profile = {
-	name: "Nishat Nasir Uddin",
+	name: "Nasir Uddin Nishat",
 	title: "Software Engineer",
 	location: "Seoul, South Korea",
 	phone: "+82-010-9780-2701",

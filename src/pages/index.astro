@@ -1,11 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { profile, projects, experience, skills, awards, services } from "../data/portfolio";
-import { getCollection } from 'astro:content';
+import {
+	profile,
+	projects,
+	experience,
+	skills,
+	awards,
+	services,
+} from "../data/portfolio";
+import { getCollection } from "astro:content";
 
 const featuredProjects = projects.slice(0, 3);
-const blogPosts = (await getCollection('blog')).sort(
-	(a, b) => b.data.date.localeCompare(a.data.date)
+const blogPosts = (await getCollection("blog")).sort((a, b) =>
+	b.data.date.localeCompare(a.data.date)
 );
 ---
 
@@ -24,14 +31,16 @@ const blogPosts = (await getCollection('blog')).sort(
 				<h1
 					class="mt-5 text-3xl font-semibold tracking-tight leading-[1.1] sm:mt-6 sm:text-5xl sm:leading-[1.05]"
 				>
-					I help teams ship products fast.
+					I build AI-powered digital products.
 				</h1>
 				<p
 					class="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-700 sm:text-base dark:text-zinc-300"
 				>
-					I’m {profile.name}, a Seoul-based engineer building
-					no-code platforms, AI agent experiences, and
-					multi-platform apps with a delivery-first mindset.
+					Every day without your product is a day your competitor
+					wins. <br /> I build your <b
+						>SaaS, App, website or AI tool</b
+					>
+					fast and done right.
 				</p>
 
 				<div class="mt-6 flex flex-wrap gap-3">
@@ -65,9 +74,7 @@ const blogPosts = (await getCollection('blog')).sort(
 					Quick info
 				</div>
 				<div class="mt-3 space-y-2 text-sm">
-					<div
-						class="flex items-center justify-between gap-3"
-					>
+					<div class="flex items-center justify-between gap-3">
 						<span class="text-zinc-500 dark:text-zinc-400"
 							>Role</span
 						>
@@ -75,21 +82,16 @@ const blogPosts = (await getCollection('blog')).sort(
 							>{profile.title}</span
 						>
 					</div>
-					<div
-						class="flex items-center justify-between gap-3"
-					>
+					<div class="flex items-center justify-between gap-3">
 						<span class="text-zinc-500 dark:text-zinc-400"
 							>Email</span
 						>
 						<a
 							class="text-zinc-900 hover:underline dark:text-zinc-100"
-							href={"mailto:" + profile.email}
-							>{profile.email}</a
+							href={"mailto:" + profile.email}>{profile.email}</a
 						>
 					</div>
-					<div
-						class="flex items-center justify-between gap-3"
-					>
+					<div class="flex items-center justify-between gap-3">
 						<span class="text-zinc-500 dark:text-zinc-400"
 							>Phone</span
 						>
@@ -104,9 +106,7 @@ const blogPosts = (await getCollection('blog')).sort(
 							{profile.phone}
 						</button>
 					</div>
-					<div
-						class="flex items-center justify-between gap-3"
-					>
+					<div class="flex items-center justify-between gap-3">
 						<span class="text-zinc-500 dark:text-zinc-400"
 							>LinkedIn</span
 						>
@@ -120,13 +120,11 @@ const blogPosts = (await getCollection('blog')).sort(
 				</div>
 				<div class="mt-4 flex flex-wrap gap-2">
 					{
-						["Flutter", "TypeScript", "Supabase"].map(
-							(t) => (
-								<span class="rounded-full border border-black/10 bg-black/[0.03] px-2 py-1 text-[11px] text-zinc-700 dark:border-white/10 dark:bg-black/20 dark:text-zinc-200">
-									{t}
-								</span>
-							)
-						)
+						["Flutter", "TypeScript", "Supabase"].map((t) => (
+							<span class="rounded-full border border-black/10 bg-black/[0.03] px-2 py-1 text-[11px] text-zinc-700 dark:border-white/10 dark:bg-black/20 dark:text-zinc-200">
+								{t}
+							</span>
+						))
 					}
 				</div>
 			</div>
@@ -153,7 +151,10 @@ const blogPosts = (await getCollection('blog')).sort(
 	<section id="projects" class="py-10">
 		<div class="flex items-end justify-between gap-4">
 			<h2 class="text-xl font-semibold tracking-tight">Projects</h2>
-			<a href="/projects/" class="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition">
+			<a
+				href="/projects/"
+				class="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition"
+			>
 				View all projects →
 			</a>
 		</div>
@@ -183,8 +184,17 @@ const blogPosts = (await getCollection('blog')).sort(
 						<div class="mt-auto pt-4 flex flex-col gap-3">
 							<details class="group">
 								<summary class="cursor-pointer select-none text-xs font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors list-none flex items-center gap-1">
-									<svg xmlns="http://www.w3.org/2000/svg" class="h-3.4 w-3.5 transition-transform group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-										<polyline points="9 18 15 12 9 6"></polyline>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-3.4 w-3.5 transition-transform group-open:rotate-90"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="3"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="9 18 15 12 9 6" />
 									</svg>
 									Details
 								</summary>
@@ -212,7 +222,18 @@ const blogPosts = (await getCollection('blog')).sort(
 										rel="noreferrer"
 										class="text-sm font-semibold text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors flex items-center gap-1"
 									>
-										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+										<svg
+											width="14"
+											height="14"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+										</svg>
 										Code
 									</a>
 								)}
@@ -257,7 +278,10 @@ const blogPosts = (await getCollection('blog')).sort(
 	<section id="blog" class="py-10">
 		<div class="flex items-end justify-between gap-4">
 			<h2 class="text-xl font-semibold tracking-tight">Blog</h2>
-			<a href="/blogs/" class="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition">
+			<a
+				href="/blogs/"
+				class="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition"
+			>
 				View all posts →
 			</a>
 		</div>
@@ -274,16 +298,16 @@ const blogPosts = (await getCollection('blog')).sort(
 								{p.data.date}
 							</span>
 						</div>
-						
+
 						<h3 class="mt-3 text-base font-semibold text-zinc-900 dark:text-white line-clamp-2">
 							{p.data.title}
 						</h3>
-						
+
 						<p class="mt-2 text-sm text-zinc-700 dark:text-zinc-300 line-clamp-3">
 							{p.data.description}
 						</p>
-						
-						<a 
+
+						<a
 							href={`/blogs/${p.id}/`}
 							target="_blank"
 							rel="noreferrer"
@@ -302,9 +326,7 @@ const blogPosts = (await getCollection('blog')).sort(
 			<div
 				class="reveal rounded-2xl border border-black/10 bg-white/70 p-5 dark:border-white/10 dark:bg-white/5"
 			>
-				<h2 class="text-xl font-semibold tracking-tight">
-					Skills
-				</h2>
+				<h2 class="text-xl font-semibold tracking-tight">Skills</h2>
 				<div class="mt-4 flex flex-wrap gap-2">
 					{
 						skills.map((s) => (
@@ -341,13 +363,10 @@ const blogPosts = (await getCollection('blog')).sort(
 		<div
 			class="reveal rounded-2xl border border-black/10 bg-white/70 p-6 dark:border-white/10 dark:bg-white/5"
 		>
-			<h2 class="text-xl font-semibold tracking-tight">
-				Contact
-			</h2>
+			<h2 class="text-xl font-semibold tracking-tight">Contact</h2>
 			<p class="mt-2 text-sm text-zinc-700 dark:text-zinc-300">
-				If you’re building something and want a fast, calm
-				execution partner, send a short note. I’ll reply with
-				next steps.
+				If you’re building something and want a fast, calm execution
+				partner, send a short note. I’ll reply with next steps.
 			</p>
 			<div class="mt-5 flex flex-wrap gap-3">
 				<a
@@ -364,8 +383,7 @@ const blogPosts = (await getCollection('blog')).sort(
 					<span
 						data-phone-text
 						class="phone-toggle phone-hidden"
-						data-phone={"tel:" +
-							profile.phone.replaceAll("-", "")}
+						data-phone={"tel:" + profile.phone.replaceAll("-", "")}
 						aria-hidden="true"
 					>
 						{profile.phone}
