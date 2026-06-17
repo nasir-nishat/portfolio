@@ -80,6 +80,9 @@
       nav.scrolled .nav-logo {
         color: var(--ink);
       }
+      nav.scrolled .nav-logo img {
+        filter: none;
+      }
       .nav-links {
         display: flex;
         align-items: center;
@@ -235,28 +238,12 @@
         overflow: hidden;
         border-left: 1px solid rgba(255, 255, 255, 0.07);
       }
-      /* CSS-rendered luxury interior — no images needed */
       .hero-visual {
         position: absolute;
         inset: 0;
-        background:
-          radial-gradient(
-            ellipse at 65% 25%,
-            rgba(212, 160, 48, 0.2) 0%,
-            transparent 55%
-          ),
-          radial-gradient(
-            ellipse at 20% 75%,
-            rgba(14, 32, 24, 0.85) 0%,
-            transparent 50%
-          ),
-          linear-gradient(
-            145deg,
-            #28885a 0%,
-            #1e6644 35%,
-            #257850 65%,
-            #1a5438 100%
-          );
+        background-image: url('https://sak-group.com/slider_images/slider_011.jpg');
+        background-size: cover;
+        background-position: center;
       }
       .hero-visual::before {
         content: "";
@@ -514,28 +501,19 @@
         overflow: hidden;
       }
       .prop-img-a {
-        background: linear-gradient(
-          135deg,
-          #1e6644 0%,
-          #2a8a5c 50%,
-          #1a5438 100%
-        );
+        background-image: url('https://sak-group.com/uploads/pj701689742714.png');
+        background-size: cover;
+        background-position: center;
       }
       .prop-img-b {
-        background: linear-gradient(
-          135deg,
-          #28885a 0%,
-          #34a470 50%,
-          #1e6644 100%
-        );
+        background-image: url('https://sak-group.com/uploads/pj121704444797.png');
+        background-size: cover;
+        background-position: center;
       }
       .prop-img-c {
-        background: linear-gradient(
-          135deg,
-          #155c38 0%,
-          #1e7a4c 50%,
-          #28885a 100%
-        );
+        background-image: url('https://sak-group.com/uploads/pj151610271681.png');
+        background-size: cover;
+        background-position: center;
       }
       .prop-img::before {
         content: "";
@@ -1065,7 +1043,9 @@
   <body>
     <!-- NAV -->
     <nav id="nav">
-      <a class="nav-logo" href="#" id="nav-logo">Brand</a>
+      <a class="nav-logo" href="#" id="nav-logo">
+        <img src="https://sak-group.com/assets/images/sak_logo_main.png" alt="SAK Group" style="height:38px; width:auto; display:block; filter: brightness(0) invert(1);" id="nav-logo-img" />
+      </a>
       <ul class="nav-links">
         <li><a href="#properties">Properties</a></li>
         <li><a href="#services">Services</a></li>
@@ -1531,7 +1511,7 @@
         const b = CONFIG.brand;
         document.title = b.name + " — " + b.tagline;
 
-        set("nav-logo", b.name);
+        // nav-logo is an image — no text override needed
         set("hero-sub", b.sub);
         set("hero-feat-name", CONFIG.properties[0].name);
         set("hero-feat-price", CONFIG.properties[0].price);
