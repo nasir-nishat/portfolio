@@ -200,7 +200,11 @@ const { title = seo.title, description = seo.description } = Astro.props;
 			<div
 				class="mx-auto flex max-w-5xl flex-col gap-3 px-4 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between dark:text-zinc-400"
 			>
-				<div>© {new Date().getFullYear()} {profile.name}</div>
+				<div>
+					<a href="/hidden-project/" class="hover:text-zinc-950 dark:hover:text-white transition-colors">
+						© {new Date().getFullYear()} {profile.name}
+					</a>
+				</div>
 				<div class="flex gap-4">
 					<a
 						class="hover:text-zinc-950 dark:hover:text-white"

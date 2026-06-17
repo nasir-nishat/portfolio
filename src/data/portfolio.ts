@@ -39,18 +39,6 @@ export const projects = [
     link: "https://mytopg.com/",
   },
   {
-    name: "Mehenot",
-    oneLiner:
-      "A marketplace that matches people to work fast, with a simple flow and secure payments.",
-    stack: ["RemixJs", "NextJs", "Supabase", "Payments", "Gemini API"],
-    details: [
-      "Skill-based matching for part-time jobs and services",
-      "Secure payments",
-      "Early-access incentives to drive adoption",
-    ],
-    link: "https://mehenot.com/",
-  },
-  {
     name: "3D Creative Projects",
     oneLiner:
       "A collection of interactive WebGL experiences: Crossy Road, Tunnel Boat, and more.",
@@ -148,6 +136,14 @@ export const awards = [
   "Sejong University Internship Scholarship",
   "Undergraduate Student Research Award",
   "Sejong University — B.S. in Computer Science & Engineering (2019–2023)",
+];
+
+export const hiddenProjects = [
+  {
+    name: "SAK Group",
+    description: "Real estate group operating in Cyprus and UAE — luxury villas, residences, and commercial properties since 2011.",
+    link: "/demo/sak-group/index.html",
+  },
 ];
 
 export const services = [
