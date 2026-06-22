@@ -1,11 +1,15 @@
+const wa = (msg: string) =>
+  `https://wa.me/821097802701?text=${encodeURIComponent(msg)}`;
+
 export const profile = {
   name: "Nasir Uddin Nishat",
   title: "Software Engineer",
-  location: "Seoul, South Korea",
+  location: "Remote · Worldwide",
   phone: "+82-010-9780-2701",
   email: "nasirnishat00@gmail.com",
   github: "https://github.com/nasir-nishat",
   linkedin: "https://linkedin.com/in/nasir-nishat",
+  whatsapp: wa("Hi Nishat! 👋 I came across your portfolio and I'd love to discuss a project. Are you available for a quick call?"),
 };
 
 export const seo = {
@@ -19,6 +23,7 @@ export const seo = {
     "startup product builder",
     "no-code platform developer",
     "AI agent developer",
+    "Coze AI developer",
     "Supabase",
     "TypeScript",
     "Flutter",
@@ -129,6 +134,7 @@ export const skills = [
   "Supabase",
   "Firebase",
   "AI agent integrations",
+  "Coze AI",
 ];
 
 export const awards = [
@@ -146,17 +152,80 @@ export const hiddenProjects = [
   },
 ];
 
-export const services = [
+export const services: Array<{
+  title: string;
+  desc: string;
+  soon?: boolean;
+  cta?: boolean;
+}> = [
   {
-    title: "Product MVP Development",
-    desc: "Tight scope, fast builds, and a clean path to version 1.",
+    title: "AI Integration",
+    desc: "Chatbots that actually help. Agents that actually run. Automations that save you real hours — not just look impressive in a demo. Built with Coze AI, OpenAI, Claude, and more. No hype, just results.",
   },
   {
-    title: "AI & Agent Integration",
-    desc: "Real-world LLM workflows and intelligent agent experiences.",
+    title: "Website · App · Ecom",
+    desc: "Landing pages that convert. Web apps that don't crash at 200 users. E-commerce that actually sells. Mobile apps people keep on their phone. If it should exist on a screen and make you money, I'll build it.",
   },
   {
-    title: "Cross-Platform Apps",
-    desc: "High-performance mobile, web, and desktop apps from a single codebase.",
+    title: "Courses",
+    desc: "5 years of building, condensed into courses that skip the boring parts. (Almost ready.)",
+    soon: true,
+  },
+  {
+    title: "Not sure where to start?",
+    desc: "Half my best clients didn't know what they needed. 20 minutes on a call usually sorts it out — no pitch, just a real conversation.",
+    cta: true,
+  },
+];
+
+export const pricing: Array<{
+  name: string;
+  price: string;
+  unit: string;
+  tagline: string;
+  features: string[];
+  whatsapp: string;
+  featured?: boolean;
+}> = [
+  {
+    name: "Starter",
+    price: "$2,500",
+    unit: "one-time",
+    tagline: "Test before you invest big",
+    features: [
+      "MVP scope (4–6 weeks)",
+      "Web or mobile — one platform",
+      "Core AI integration",
+      "Handoff + documentation",
+    ],
+    whatsapp: wa("Hi Nishat! 👋 I'm interested in the Starter package ($2,500). I have an idea I'd like to validate — can we hop on a quick call to talk about it?"),
+  },
+  {
+    name: "Builder",
+    price: "$6,000",
+    unit: "one-time",
+    tagline: "The whole thing. Done right.",
+    features: [
+      "Full product (8–12 weeks)",
+      "Multi-platform",
+      "AI agents & automation",
+      "Backend + database setup",
+      "Launch support included",
+    ],
+    whatsapp: wa("Hi Nishat! 👋 I'm interested in the Builder package ($6,000). I want to build a full product and I think you're the right person for it. Can we talk?"),
+    featured: true,
+  },
+  {
+    name: "Partner",
+    price: "$3,500",
+    unit: "/ month",
+    tagline: "Your tech guy, on retainer",
+    features: [
+      "Dedicated monthly hours",
+      "Feature development",
+      "Maintenance & improvements",
+      "Priority response time",
+    ],
+    whatsapp: wa("Hi Nishat! 👋 I'm interested in the Partner retainer ($3,500/month). I'm looking for an ongoing tech partner to work with long-term. Are you available for a call?"),
   },
 ];

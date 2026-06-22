@@ -1,16 +1,23 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --accent: #1e53ad;
+  --accent-soft: #EFF6FF;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Minimal motion: reveal on first view */
 .reveal {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 500ms ease, transform 500ms ease;
+  transform: translateY(8px);
+  transition: opacity 380ms ease, transform 380ms ease;
 }
 
 .reveal.is-visible {
@@ -18,15 +25,13 @@ html {
   transform: translateY(0);
 }
 
-/* Subtle hover lift for cards */
-.card-hover {
-  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+.lift {
+  transition: transform 150ms ease, box-shadow 150ms ease;
 }
 
-.card-hover:hover {
+.lift:hover {
   transform: translateY(-2px);
-  border-color: color-mix(in oklab, currentColor 18%, transparent);
-  background-color: color-mix(in oklab, currentColor 7%, transparent);
+  box-shadow: 0 8px 28px rgba(37, 99, 235, 0.08);
 }
 
 .phone-toggle {
@@ -44,11 +49,28 @@ html {
   opacity: 1;
 }
 
-/* Better <details> click target */
 summary::-webkit-details-marker {
   display: none;
 }
 
 summary {
   list-style: none;
+}
+
+/* Skills marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
 }

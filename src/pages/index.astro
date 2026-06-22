@@ -1,410 +1,369 @@
 ---
 import { getCollection } from "astro:content";
 import {
-awards,
-experience,
-profile,
-projects,
-services,
-skills,
+  awards,
+  experience,
+  pricing,
+  profile,
+  projects,
+  services,
+  skills,
 } from "../data/portfolio";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const featuredProjects = projects.slice(0, 3);
 const blogPosts = (await getCollection("blog")).sort((a, b) =>
-	b.data.date.localeCompare(a.data.date)
+  b.data.date.localeCompare(a.data.date)
 );
 ---
 
 <BaseLayout>
-	<section class="py-10 sm:py-14">
-		<div class="grid items-start gap-8 sm:grid-cols-[1.5fr_0.8fr]">
-			<div class="reveal">
-				<p
-					class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/[0.03] px-3 py-1 text-xs text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-200"
-				>
-					<span
-						class="h-1.5 w-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"
-					></span>
-					{profile.location}
-				</p>
-				<h1
-					class="mt-5 text-3xl font-semibold tracking-tight leading-[1.1] sm:mt-6 sm:text-5xl sm:leading-[1.05]"
-				>
-					I build AI-powered digital products.
-				</h1>
-				<p
-					class="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-700 sm:text-base dark:text-zinc-300"
-				>
-					Every day without your product is a day your competitor
-					wins. <br /> I build your <b
-						>AI agents, automations, SaaS, App, website or AI tool</b
-					><br/>
-					fast and actually make it work.
-				</p>
 
-				<div class="mt-6 flex flex-wrap gap-3">
-					<a
-                        href="/call/"
-                        class="rounded-xl bg-green-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-700 active:scale-[0.99]"
-                    >
-                        Book a Call
-                    </a>
-					<a
-						href="/projects/"
-						class="rounded-xl bg-zinc-900 px-4 py-2 text-sm font-semibold text-zinc-50 transition hover:opacity-90 active:scale-[0.99] dark:bg-white dark:text-zinc-950"
-					>
-						Projects
-					</a>
-					<a
-						href={"mailto:" + profile.email}
-						class="rounded-xl border border-black/10 bg-black/[0.03] px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-black/[0.05] active:scale-[0.99] dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-					>
-						Email
-					</a>
-					<a
-						href={profile.github}
-						target="_blank"
-						rel="noreferrer"
-						class="rounded-xl border border-black/10 bg-black/[0.03] px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-black/[0.05] dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-					>
-						GitHub
-					</a>
-				</div>
-			</div>
+  <!-- ─── HERO ────────────────────────────────────────────── -->
+  <section class="pt-6 pb-8">
+    <div class="grid gap-4 sm:grid-cols-[1fr_210px] items-start">
 
-			<div
-				class="reveal rounded-2xl border border-black/10 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5"
-			>
-				<div class="text-xs text-zinc-500 dark:text-zinc-400">
-					Quick info
-				</div>
-				<div class="mt-3 space-y-2 text-sm">
-					<div class="flex items-center justify-between gap-3">
-						<span class="text-zinc-500 dark:text-zinc-400"
-							>Role</span
-						>
-						<span class="text-zinc-900 dark:text-zinc-100"
-							>{profile.title}</span
-						>
-					</div>
-					<div class="flex items-center justify-between gap-3">
-						<span class="text-zinc-500 dark:text-zinc-400"
-							>Email</span
-						>
-						<a
-							class="text-zinc-900 hover:underline dark:text-zinc-100"
-							href={"mailto:" + profile.email}>{profile.email}</a
-						>
-					</div>
-					<div class="flex items-center justify-between gap-3">
-						<span class="text-zinc-500 dark:text-zinc-400"
-							>Phone</span
-						>
-						<button
-							type="button"
-							data-phone={"tel:" +
-								profile.phone.replaceAll("-", "")}
-							aria-label="Reveal phone number"
-							aria-expanded="false"
-							class="phone-toggle phone-hidden text-zinc-900 hover:underline dark:text-zinc-100"
-						>
-							{profile.phone}
-						</button>
-					</div>
-					<div class="flex items-center justify-between gap-3">
-						<span class="text-zinc-500 dark:text-zinc-400"
-							>LinkedIn</span
-						>
-						<a
-							class="text-zinc-900 hover:underline dark:text-zinc-100"
-							href={profile.linkedin}
-							target="_blank"
-							rel="noreferrer">Open</a
-						>
-					</div>
-				</div>
-				<div class="mt-4 flex flex-wrap gap-2">
-					{
-						["Flutter", "TypeScript", "Supabase"].map((t) => (
-							<span class="rounded-full border border-black/10 bg-black/[0.03] px-2 py-1 text-[11px] text-zinc-700 dark:border-white/10 dark:bg-black/20 dark:text-zinc-200">
-								{t}
-							</span>
-						))
-					}
-				</div>
-			</div>
-		</div>
-	</section>
+      <!-- Headline -->
+      <div>
+        <h1 class="text-5xl font-black leading-[1.02] tracking-tight sm:text-[4.5rem]">
+          I build&nbsp;<span class="text-[#2563EB]">AI&#8209;powered</span><br />
+          products people<br />
+          actually use.
+        </h1>
+        <p class="mt-5 max-w-md text-base text-zinc-500 leading-relaxed">
+          You've got the idea. I've got the stack, the experience, and a track
+          record of actually shipping things. Apps, AI agents, automations,
+          e-commerce — let's build something people actually talk about.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            href="/projects/"
+            class="rounded-xl border border-zinc-200 bg-white px-5 py-2.5 text-sm font-bold text-zinc-900 transition hover:border-zinc-300 hover:shadow-sm active:scale-[0.99]"
+          >
+            See my work
+          </a>
+          <a
+            href={"mailto:" + profile.email}
+            class="rounded-xl border border-zinc-200 bg-white px-5 py-2.5 text-sm font-bold text-zinc-900 transition hover:border-zinc-300 hover:shadow-sm active:scale-[0.99]"
+          >
+            Email me
+          </a>
+        </div>
+      </div>
 
-	<section class="py-8">
-		<div class="grid gap-3 sm:grid-cols-3">
-			{
-				services.map((service) => (
-					<div class="reveal card-hover rounded-2xl border border-black/10 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-						<div class="text-sm font-semibold text-zinc-900 dark:text-white">
-							{service.title}
-						</div>
-						<div class="mt-1 text-sm text-zinc-700 dark:text-zinc-300">
-							{service.desc}
-						</div>
-					</div>
-				))
-			}
-		</div>
-	</section>
+      <!-- CTA block -->
+      <div class="rounded-2xl bg-[#2563EB] p-5 self-start">
+        <div class="flex items-center gap-1.5 text-xs font-bold text-white/60">
+          <span class="h-1.5 w-1.5 rounded-full bg-white/50 animate-pulse"></span>
+          Available now
+        </div>
+        <div class="mt-3 text-2xl font-black leading-tight text-white">
+          Let's<br />build.
+        </div>
+        <a
+          href={profile.whatsapp} target="_blank" rel="noreferrer"
+          class="mt-4 inline-flex items-center gap-1 rounded-xl bg-white px-4 py-2 text-sm font-bold text-[#2563EB] transition hover:bg-blue-50 active:scale-[0.98]"
+        >
+          Book a call →
+        </a>
+        <div class="mt-4 border-t border-white/15 pt-3 text-xs text-white/50">
+          {profile.location}
+        </div>
+      </div>
+    </div>
 
-	<section id="projects" class="py-10">
-		<div class="flex items-end justify-between gap-4">
-			<h2 class="text-xl font-semibold tracking-tight">Projects</h2>
-			<a
-				href="/projects/"
-				class="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition"
-			>
-				View all projects →
-			</a>
-		</div>
+    <!-- Stats bar -->
+    <div class="mt-8 flex flex-wrap gap-8 border-t border-black/[0.06] pt-6">
+      <div>
+        <div class="text-3xl font-black text-zinc-900">5+</div>
+        <div class="text-xs font-medium text-zinc-400">shipped, not just started</div>
+      </div>
+      <div>
+        <div class="text-3xl font-black text-zinc-900">4+</div>
+        <div class="text-xs font-medium text-zinc-400">years in the trenches</div>
+      </div>
+      <div>
+        <div class="text-3xl font-black text-zinc-900">3</div>
+        <div class="text-xs font-medium text-zinc-400">AI platforms live</div>
+      </div>
+      <div>
+        <div class="text-3xl font-black text-zinc-900">0</div>
+        <div class="text-xs font-medium text-zinc-400">missed deadlines (so far)</div>
+      </div>
+    </div>
+  </section>
 
-		<div class="mt-4 grid gap-4 lg:grid-cols-3 sm:grid-cols-2">
-			{
-				featuredProjects.map((p) => (
-					<article class="reveal card-hover rounded-2xl border border-black/10 bg-white/70 p-5 dark:border-white/10 dark:bg-white/5 flex flex-col">
-						<div class="flex flex-col gap-3">
-							<div class="flex flex-wrap gap-2">
-								{p.stack.map((t) => (
-									<span class="rounded-full border border-black/10 bg-black/[0.03] px-2 py-1 text-[10px] font-medium text-zinc-700 dark:border-white/10 dark:bg-black/20 dark:text-zinc-200">
-										{t}
-									</span>
-								))}
-							</div>
-							<div>
-								<h3 class="text-base font-semibold text-zinc-900 dark:text-white">
-									{p.name}
-								</h3>
-								<p class="mt-1 text-sm text-zinc-700 dark:text-zinc-300 line-clamp-2">
-									{p.oneLiner}
-								</p>
-							</div>
-						</div>
+  <!-- ─── SERVICES BENTO ───────────────────────────────────── -->
+  <section class="py-6">
+    <div class="grid sm:grid-cols-3 gap-3">
 
-						<div class="mt-auto pt-4 flex flex-col gap-3">
-							<details class="group">
-								<summary class="cursor-pointer select-none text-xs font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors list-none flex items-center gap-1">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="h-3.4 w-3.5 transition-transform group-open:rotate-90"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="3"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-									>
-										<polyline points="9 18 15 12 9 6" />
-									</svg>
-									Details
-								</summary>
-								<ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-zinc-700 dark:text-zinc-300">
-									{p.details.map((d) => (
-										<li>{d}</li>
-									))}
-								</ul>
-							</details>
-							<div class="flex items-center gap-4">
-								{p.link && (
-									<a
-										href={p.link}
-										target="_blank"
-										rel="noreferrer"
-										class="text-sm font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors"
-									>
-										View Live →
-									</a>
-								)}
-								{p.github && (
-									<a
-										href={p.github}
-										target="_blank"
-										rel="noreferrer"
-										class="text-sm font-semibold text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors flex items-center gap-1"
-									>
-										<svg
-											width="14"
-											height="14"
-											viewBox="0 0 24 24"
-											fill="none"
-											stroke="currentColor"
-											stroke-width="2"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-										>
-											<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-										</svg>
-										Code
-									</a>
-								)}
-							</div>
-						</div>
-					</article>
-				))
-			}
-		</div>
-	</section>
+      <!-- AI Integration — 2 cols -->
+      <div class="reveal lift sm:col-span-2 rounded-2xl border border-zinc-100 bg-white p-5 shadow-sm">
+        <div class="text-lg font-black text-zinc-900">{services[0].title}</div>
+        <p class="mt-1 text-sm text-zinc-500">{services[0].desc}</p>
+      </div>
 
-	<section id="experience" class="py-10">
-		<h2 class="text-xl font-semibold tracking-tight">Experience</h2>
-		<div class="mt-4 space-y-3">
-			{
-				experience.map((e) => (
-					<details class="reveal rounded-2xl border border-black/10 bg-white/70 p-5 dark:border-white/10 dark:bg-white/5">
-						<summary class="cursor-pointer select-none">
-							<div class="flex flex-wrap items-baseline justify-between gap-2">
-								<div class="text-sm font-semibold">
-									{e.company} ·{" "}
-									<span class="text-zinc-700 dark:text-zinc-200">
-										{e.role}
-									</span>
-								</div>
-								<div class="text-xs text-zinc-500 dark:text-zinc-400">
-									{e.when}
-								</div>
-							</div>
-						</summary>
-						<ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-zinc-700 dark:text-zinc-300">
-							{e.highlights.map((h) => (
-								<li>{h}</li>
-							))}
-						</ul>
-					</details>
-				))
-			}
-		</div>
-	</section>
+      <!-- Courses — coming soon -->
+      <div class="reveal rounded-2xl border border-dashed border-blue-200 bg-[#EFF6FF] p-5">
+        <span class="inline-block rounded-full bg-[#DBEAFE] px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-[#2563EB] mb-2">Soon</span>
+        <div class="text-base font-black text-zinc-400">{services[2].title}</div>
+        <p class="mt-1 text-sm text-zinc-400">{services[2].desc}</p>
+      </div>
 
-	<section id="blog" class="py-10">
-		<div class="flex items-end justify-between gap-4">
-			<h2 class="text-xl font-semibold tracking-tight">Blog</h2>
-			<a
-				href="/blogs/"
-				class="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition"
-			>
-				View all posts →
-			</a>
-		</div>
+      <!-- Website / App / Ecom — 2 cols -->
+      <div class="reveal lift sm:col-span-2 rounded-2xl border border-zinc-100 bg-white p-5 shadow-sm">
+        <div class="text-lg font-black text-zinc-900">{services[1].title}</div>
+        <p class="mt-1 text-sm text-zinc-500">{services[1].desc}</p>
+      </div>
 
-		<div class="mt-4 grid gap-4 sm:grid-cols-3">
-			{
-				blogPosts.slice(0, 3).map((p) => (
-					<article class="reveal card-hover rounded-2xl border border-black/10 bg-white/70 p-5 dark:border-white/10 dark:bg-white/5 flex flex-col">
-						<div class="flex items-center gap-3">
-							<span class="rounded-full border border-black/10 bg-black/[0.03] px-2 py-1 text-[10px] font-semibold text-zinc-700 dark:border-white/10 dark:bg-black/20 dark:text-zinc-200">
-								{p.data.tag}
-							</span>
-							<span class="text-[11px] text-zinc-500 dark:text-zinc-400">
-								{p.data.date}
-							</span>
-						</div>
+      <!-- CTA card -->
+      <div class="reveal rounded-2xl bg-[#2563EB] p-5">
+        <div class="text-base font-black leading-snug text-white">{services[3].title}</div>
+        <p class="mt-1 text-sm text-white/70">{services[3].desc}</p>
+        <a
+          href={profile.whatsapp} target="_blank" rel="noreferrer"
+          class="mt-3 inline-flex items-center text-sm font-bold text-white hover:text-white/80 transition"
+        >
+          Book a call →
+        </a>
+      </div>
+    </div>
+  </section>
 
-						<h3 class="mt-3 text-base font-semibold text-zinc-900 dark:text-white line-clamp-2">
-							{p.data.title}
-						</h3>
+  <!-- ─── PROJECTS ──────────────────────────────────────────── -->
+  <section id="projects" class="py-6">
+    <div class="flex items-center justify-between mb-2">
+      <p class="text-[11px] font-black uppercase tracking-widest text-zinc-400">
+        Recent work
+      </p>
+      <a href="/projects/" class="text-xs font-bold text-[#2563EB] hover:underline">
+        View all →
+      </a>
+    </div>
 
-						<p class="mt-2 text-sm text-zinc-700 dark:text-zinc-300 line-clamp-3">
-							{p.data.description}
-						</p>
+    <div class="divide-y divide-black/[0.06]">
+      {
+        featuredProjects.map((p) => (
+          <div class="flex items-start gap-4 py-4 group cursor-default">
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-2">
+                <h3 class="text-sm font-black text-zinc-900">{p.name}</h3>
+                {p.stack.slice(0, 3).map((t) => (
+                  <span class="text-[10px] font-semibold text-zinc-400">{t}</span>
+                ))}
+              </div>
+              <p class="mt-0.5 text-sm text-zinc-500 truncate">{p.oneLiner}</p>
+            </div>
+            <div class="flex items-center gap-3 flex-none pt-0.5">
+              {p.link && (
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-xs font-bold text-[#2563EB] opacity-0 group-hover:opacity-100 transition"
+                >
+                  Live →
+                </a>
+              )}
+              {p.github && (
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-xs font-bold text-zinc-400 opacity-0 group-hover:opacity-100 transition hover:text-zinc-700"
+                >
+                  Code
+                </a>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
-						<a
-							href={`/blogs/${p.id}/`}
-							target="_blank"
-							rel="noreferrer"
-							class="mt-auto pt-4 block text-sm font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors"
-						>
-							Read post →
-						</a>
-					</article>
-				))
-			}
-		</div>
-	</section>
+  <!-- ─── PRICING ───────────────────────────────────────────── -->
+  <section class="py-6">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-4">
+      <div>
+        <h2 class="text-xl font-black text-zinc-900">Simple pricing.</h2>
+        <p class="text-sm text-zinc-500 mt-0.5">Fixed price. No "just 2 more hours" emails.</p>
+      </div>
+      <a href={profile.whatsapp} target="_blank" rel="noreferrer" class="text-xs font-bold text-[#2563EB] hover:underline whitespace-nowrap">
+        Free 20-min call →
+      </a>
+    </div>
 
-	<section id="skills" class="py-10">
-		<div class="grid gap-4 sm:grid-cols-2">
-			<div
-				class="reveal rounded-2xl border border-black/10 bg-white/70 p-5 dark:border-white/10 dark:bg-white/5"
-			>
-				<h2 class="text-xl font-semibold tracking-tight">Skills</h2>
-				<div class="mt-4 flex flex-wrap gap-2">
-					{
-						skills.map((s) => (
-							<span class="rounded-full border border-black/10 bg-black/[0.03] px-3 py-1 text-xs text-zinc-700 dark:border-white/10 dark:bg-black/20 dark:text-zinc-200">
-								{s}
-							</span>
-						))
-					}
-				</div>
-			</div>
-			<div
-				class="reveal rounded-2xl border border-black/10 bg-white/70 p-5 dark:border-white/10 dark:bg-white/5"
-			>
-				<h2 class="text-xl font-semibold tracking-tight">
-					Awards & Education
-				</h2>
-				<ul
-					class="mt-4 space-y-2 text-sm text-zinc-700 dark:text-zinc-300"
-				>
-					{
-						awards.map((a) => (
-							<li class="flex gap-2">
-								<span class="mt-1 inline-block h-1.5 w-1.5 flex-none rounded-full bg-zinc-900/60 dark:bg-white/60" />
-								<span>{a}</span>
-							</li>
-						))
-					}
-				</ul>
-			</div>
-		</div>
-	</section>
+    <div class="grid gap-3 sm:grid-cols-3">
+      {
+        pricing.map((plan) => (
+          <div class={`reveal rounded-2xl p-5 flex flex-col ${plan.featured ? "bg-[#2563EB]" : "border border-zinc-100 bg-white shadow-sm"}`}>
+            <div class={`text-xs font-black uppercase tracking-wider ${plan.featured ? "text-white/60" : "text-zinc-400"}`}>
+              {plan.name}
+            </div>
+            <div class="mt-1 flex items-end gap-1">
+              <span class={`text-3xl font-black ${plan.featured ? "text-white" : "text-zinc-900"}`}>
+                {plan.price}
+              </span>
+              <span class={`text-xs pb-1 ${plan.featured ? "text-white/50" : "text-zinc-400"}`}>
+                {plan.unit}
+              </span>
+            </div>
+            <div class={`text-sm font-bold mt-1 mb-4 ${plan.featured ? "text-white/90" : "text-zinc-700"}`}>
+              {plan.tagline}
+            </div>
+            <ul class="space-y-2 flex-1">
+              {plan.features.map((f) => (
+                <li class={`flex gap-2 text-sm ${plan.featured ? "text-white/80" : "text-zinc-500"}`}>
+                  <span class={`mt-[5px] h-1.5 w-1.5 flex-none rounded-full ${plan.featured ? "bg-white/60" : "bg-[#2563EB]"}`} />
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={plan.whatsapp} target="_blank" rel="noreferrer"
+              class={`mt-5 block w-full rounded-xl py-2.5 text-center text-sm font-bold transition active:scale-[0.98] ${
+                plan.featured
+                  ? "bg-white text-[#2563EB] hover:bg-blue-50"
+                  : "bg-zinc-900 text-white hover:bg-zinc-800"
+              }`}
+            >
+              Get started
+            </a>
+          </div>
+        ))
+      }
+    </div>
 
-	<section id="contact" class="py-10 pb-14">
-		<div
-			class="reveal rounded-2xl border border-black/10 bg-white/70 p-6 dark:border-white/10 dark:bg-white/5"
-		>
-			<h2 class="text-xl font-semibold tracking-tight">Contact</h2>
-			<p class="mt-2 text-sm text-zinc-700 dark:text-zinc-300">
-				If you’re building something and want a fast, calm execution
-				partner, send a short note. I’ll reply with next steps.
-			</p>
-			<div class="mt-5 flex flex-wrap gap-3">
-				<a
-					class="rounded-xl bg-zinc-900 px-4 py-2 text-sm font-semibold text-zinc-50 transition hover:opacity-90 active:scale-[0.99] dark:bg-white dark:text-zinc-950"
-					href={"mailto:" + profile.email}
-				>
-					{profile.email}
-				</a>
-				<a
-					class="rounded-xl border border-black/10 bg-black/[0.03] px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-black/[0.05] dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-					href="#"
-					data-phone-link
-				>
-					<span
-						data-phone-text
-						class="phone-toggle phone-hidden"
-						data-phone={"tel:" + profile.phone.replaceAll("-", "")}
-						aria-hidden="true"
-					>
-						{profile.phone}
-					</span>
-					<span class="sr-only">Reveal phone number</span>
-				</a>
-				<a
-					class="rounded-xl border border-black/10 bg-black/[0.03] px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-black/[0.05] dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-					href={profile.linkedin}
-					target="_blank"
-					rel="noreferrer"
-				>
-					LinkedIn
-				</a>
-			</div>
-		</div>
-	</section>
+    <p class="mt-4 text-xs text-zinc-400">
+      Something doesn't fit?{" "}
+      <a href={profile.whatsapp} target="_blank" rel="noreferrer" class="text-[#2563EB] font-bold hover:underline">
+        Message me and we'll figure it out →
+      </a>
+    </p>
+  </section>
+
+  <!-- ─── EXPERIENCE ───────────────────────────────────────── -->
+  <section id="experience" class="py-6">
+    <p class="text-[11px] font-black uppercase tracking-widest text-zinc-400 mb-3">
+      Where I've worked
+    </p>
+    <div class="space-y-2">
+      {
+        experience.map((e) => (
+          <details class="reveal rounded-2xl border border-zinc-100 bg-white p-4 shadow-sm">
+            <summary class="cursor-pointer select-none">
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <div class="text-sm font-black text-zinc-900">
+                  {e.company}{" "}
+                  <span class="font-normal text-zinc-400">· {e.role}</span>
+                </div>
+                <div class="text-xs text-zinc-400">{e.when}</div>
+              </div>
+            </summary>
+            <ul class="mt-3 space-y-1.5 pl-3 border-l-2 border-[#2563EB]/25">
+              {e.highlights.map((h) => (
+                <li class="text-sm text-zinc-500">{h}</li>
+              ))}
+            </ul>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ─── BLOG ─────────────────────────────────────────────── -->
+  <section id="blog" class="py-6">
+    <div class="flex items-center justify-between mb-3">
+      <p class="text-[11px] font-black uppercase tracking-widest text-zinc-400">
+        Thoughts
+      </p>
+      <a href="/blogs/" class="text-xs font-bold text-[#2563EB] hover:underline">
+        All posts →
+      </a>
+    </div>
+    <div class="grid gap-3 sm:grid-cols-3">
+      {
+        blogPosts.slice(0, 3).map((p) => (
+          <article class="reveal lift rounded-2xl border border-zinc-100 bg-white p-4 flex flex-col shadow-sm">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] font-black text-zinc-500">
+                {p.data.tag}
+              </span>
+              <span class="text-[11px] text-zinc-400">{p.data.date}</span>
+            </div>
+            <h3 class="text-sm font-black text-zinc-900 line-clamp-2 flex-1">
+              {p.data.title}
+            </h3>
+            <a href={`/blogs/${p.id}/`} class="mt-3 text-xs font-bold text-[#2563EB] hover:underline">
+              Read →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ─── SKILLS MARQUEE ──────────────────────────────────── -->
+  <section class="py-4 overflow-hidden border-y border-black/[0.06]">
+    <div class="marquee-track select-none">
+      {
+        [...skills, ...skills].map((s) => (
+          <span class="flex items-center gap-2.5 text-sm font-black text-zinc-700 whitespace-nowrap">
+            {s}
+            <span class="h-1 w-1 rounded-full bg-[#2563EB] flex-none" />
+          </span>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ─── ACHIEVEMENTS ─────────────────────────────────────── -->
+  <section class="py-6">
+    <p class="text-[11px] font-black uppercase tracking-widest text-zinc-400 mb-3">Achievements</p>
+    <ul class="flex flex-wrap gap-x-6 gap-y-2">
+      {
+        awards.map((a) => (
+          <li class="flex items-center gap-2 text-sm text-zinc-600">
+            <span class="h-1.5 w-1.5 flex-none rounded-full bg-[#2563EB]" />
+            {a}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- ─── CONTACT ──────────────────────────────────────────── -->
+  <section id="contact" class="py-6 pb-14 border-t border-black/[0.06]">
+    <h2 class="text-base font-black text-zinc-900">Let's talk.</h2>
+    <p class="mt-1 text-sm text-zinc-500">
+      Got an idea? A weird question? Not even sure yet? Message me — I actually
+      read everything and reply fast. No ghosting, no sales pitch.
+    </p>
+    <div class="mt-4 flex flex-wrap gap-3">
+      <a
+        href={"mailto:" + profile.email}
+        class="rounded-xl bg-[#2563EB] px-4 py-2 text-sm font-bold text-white hover:bg-[#1D4ED8] transition active:scale-[0.99]"
+      >
+        {profile.email}
+      </a>
+      <a
+        href={profile.whatsapp}
+        target="_blank"
+        rel="noreferrer"
+        class="rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-bold text-zinc-900 hover:bg-zinc-50 transition active:scale-[0.99]"
+      >
+        WhatsApp
+      </a>
+      <a
+        href={profile.linkedin}
+        target="_blank"
+        rel="noreferrer"
+        class="rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-bold text-zinc-900 hover:bg-zinc-50 transition active:scale-[0.99]"
+      >
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
 </BaseLayout>
